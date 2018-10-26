@@ -37,7 +37,8 @@
       <span class="hidden-xs hidden-sm">
         <%= @node.created_at.to_s(:long) %>
       </span>
-      <span class="hidden-xs hidden-sm hidden-print">
+      <a class="hidden-md hidden-lg hidden-xl" data-toggle="collapse" href="#collapse-info" role="button" aria-expanded="false" aria-controls="collapse-info" id="collapse-button">...</a>
+      <span class="collapse" id="collapse-info">
         | <%= number_with_delimiter(@node.totalviews) %> <%= t('notes.show.views') %>
         <% if @node.comments %>
           | <i class="fa fa-comment"></i>
@@ -116,3 +117,13 @@
 </div><!--/span-->
 
 <%= render partial: "sidebar/related" %>
+<style>
+  .collapse.in {
+      display: unset;
+  }
+</style>
+<script>
+  $("#collapse-button").click(function(){
+      $(this).remove();
+  });
+</script>
